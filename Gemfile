@@ -20,7 +20,7 @@ gem "jbuilder"
 # Gemfile
 gem "dartsass-rails"
 
-gem 'bootstrap', '~> 5.3.3'
+gem 'bootstrap', '~> 5.3.5'
 gem 'jquery-rails'
 gem 'json', '~> 2.10', '>= 2.10.2'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
