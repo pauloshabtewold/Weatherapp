@@ -1,0 +1,88 @@
+<div class="container-fluid py-5">
+  <div class="color-display <%= @api_color %>">
+    <h1 class="display-4 fw-bold"><%= @final_output %></h1>
+    <p class="lead">
+      <% if @final_output == "N/A" %>
+        No air quality data available for <%= @zipcode %>
+      <% else %>
+        Current ozone air quality for <strong><%= @reporting_area %></strong>
+      <% end %>
+    </p>
+    
+    <% if @category_name != "Unknown" %>
+      <p class="lead">Category: <%= @category_name %></p>
+    <% end %>
+
+    <hr class="my-4">
+    
+    <div class="zipcode-info">
+      <small class="text-muted">
+        Showing results for ZIP Code: <strong><%= @zipcode %></strong><br>
+        <%= Time.current.strftime("Last checked: %m/%d/%Y %I:%M %p %Z") %>
+      </small>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <!-- Current Weather -->
+    <div class="col-md-6 mb-4">
+      <div class="card weather-card">
+        <div class="card-body">
+          <% if @current_weather_error %>
+            <div class="alert alert-danger"><%= @current_weather_error %></div>
+          <% else %>
+            <h3 class="card-title">
+              Current Weather for <%= @current_weather.dig('location', 'name') %>
+            </h3>
+            <div class="row">
+              <div class="col-4">
+                <img src="<%= @current_weather.dig('current', 'condition', 'icon') %>" 
+                     alt="Weather icon" class="weather-icon">
+                <h2 class="display-4"><%= @current_weather.dig('current', 'temp_f') %>°F</h2>
+              </div>
+              <div class="col-8">
+                <ul class="weather-details list-unstyled">
+                  <li>Condition: <%= @current_weather.dig('current', 'condition', 'text') %></li>
+                  <li>Humidity: <%= @current_weather.dig('current', 'humidity') %>%</li>
+                  <li>Wind: <%= @current_weather.dig('current', 'wind_mph') %> mph</li>
+                  <li>UV Index: <%= @current_weather.dig('current', 'uv') %></li>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card forecast-card">
+        <div class="card-body">
+          <% if @forecast_error %>
+            <div class="alert alert-danger"><%= @forecast_error %></div>
+          <% else %>
+            <h3 class="card-title mb-4">7-Day Forecast</h3>
+            <div class="row">
+              <% @forecast.dig('forecast', 'forecastday')&.each do |day| %>
+                <div class="col-md-4 col-6 mb-3">
+                  <div class="forecast-day">
+                    <h6><%= Date.parse(day['date']).strftime('%A') %></h6>
+                    <img src="<%= day.dig('day', 'condition', 'icon') %>" 
+                         alt="Forecast icon" class="forecast-icon">
+                    <div class="temps">
+                      <span class="high"><%= day.dig('day', 'maxtemp_f') %>°</span>
+                      <span class="low"><%= day.dig('day', 'mintemp_f') %>°</span>
+                    </div>
+                    <div class="pop">Rain: <%= day.dig('day', 'daily_chance_of_rain') %>%</div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

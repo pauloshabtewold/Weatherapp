@@ -1,0 +1,69 @@
+@import "bootstrap";
+
+.green {
+    background-color: green;
+}
+.yellow {
+    background-color: yellow;
+}
+.orange {
+    background-color: orange;
+}
+.red {
+    background-color: red;
+}
+.purple {
+    background-color: purple;
+}
+.maroon {
+    background-color: maroon;
+}
+.gray {
+    background-color: gray;
+}
+
+.weather-card {
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border-radius: 15px;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+  }
+  
+  .weather-icon {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .forecast-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+  }
+  
+  .forecast-day {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0,0,0,0.03);
+    border-radius: 10px;
+    
+    h6 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .forecast-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0.5rem auto;
+  }
+  
+  .temps {
+    font-weight: 500;
+    .high { color: #dc3545; }
+    .low { color: #0d6efd; margin-left: 0.5rem; }
+  }
+  
+  .pop {
+    font-size: 0.9em;
+    color: #6c757d;
+  }

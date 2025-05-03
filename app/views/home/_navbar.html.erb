@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container-fluid">
+    <%= link_to "Weather and Air Quality", root_path, class: "navbar-brand" %>
+    
+    <%= form_with url: root_path, method: :get, class: "d-flex ms-auto" do |f| %>
+  <div class="input-group">
+    <%= f.text_field :zipcode,
+          class: "form-control",
+          placeholder: "Enter 5-digit ZIP Code",
+          value: params[:zipcode],
+          pattern: "[0-9]{5}",
+          title: "Please enter exactly 5 numbers",
+          maxlength: "5",
+          inputmode: "numeric" %>
+    <button type="submit" class="btn btn-outline-light">
+      <i class="bi bi-search"></i> Search
+    </button>
+  </div>
+<% end %>
+  </div>
+</nav>
