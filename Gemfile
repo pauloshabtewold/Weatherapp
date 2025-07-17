@@ -22,7 +22,7 @@ gem "dartsass-rails"
 
 gem 'bootstrap', '~> 5.3.3'
 gem 'jquery-rails'
-gem 'json', '~> 2.10', '>= 2.10.2'
+gem 'json', '~> 2.13'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
